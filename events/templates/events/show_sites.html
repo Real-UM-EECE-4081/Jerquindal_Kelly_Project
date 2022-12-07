@@ -1,0 +1,50 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+
+<div class="card">
+  <div class="card-header">
+    Training Site
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ site }}</h5>
+    <p class="card-text">
+       <ul>
+
+   <li>{{ site.address }}</li>
+   <li>{{ site.zip_code }}</li>
+   <li>{{ site.phone }}</li>
+   <li>{{ site.email_address }}</li>
+   <li><a href="{{ site.web }}">{{ site.web }}</a></li>
+   <li>OIC: {{ site_owner }} </li>
+   <li>OIC's Email: {{ site_owner.email }} </li>
+
+   </ul>
+   <br>
+
+   {% if site.site_image %}
+   <img src="{{ site.site_image.url }}" width=500>
+   {% endif %}
+
+
+
+    </p>
+    <br/>
+    <h3>Events At This Training Site...</h3>
+    {% if events %}
+{% for event in events %}
+ <a href="{% url 'show-event' event.id %}">{{ event}}</a><br/>
+{% endfor %}
+<br/>
+{% else %}
+No Events Scheduled At This Time.
+{% endif %}
+  </div>
+  <br/><br/>
+</div>
+   <br/>
+
+
+   </center>
+{% endblock %}

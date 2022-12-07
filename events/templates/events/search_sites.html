@@ -1,0 +1,66 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+	{% if searched %}
+		<h1>You Searched For {{ searched }}</h1>
+		<br/>
+
+
+
+		{% for site in sites %}
+			
+			<div class="card">
+  <div class="card-header">
+    TrainingSite
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ site }}</h5>
+    <p class="card-text">
+    	<ul>
+    {% if site.address %}
+		<li>{{ site.address }}</li>
+	{% endif %}
+
+	{% if site.zip_code %}
+		<li>{{ site.zip_code }}</li>
+	{% endif %}
+
+	{% if site.phone %}
+		<li>{{ site.phone }}</li>
+	{% endif %}
+
+	{% if site.email_address %}
+		<li>{{ site.email_address }}</li>
+	{% endif %}
+
+	{% if site.web %}
+		<li><a href="{{ site.web }}">{{ site.web }}</a></li>
+	{% endif %}
+
+	{% if site.owner %}
+		<li>Owner ID: {{ site.owner }} </li>
+	{% endif %}
+	
+
+	</ul>
+
+
+
+    </p>
+  </div>
+</div>
+	<br/>
+
+
+		{% endfor %}
+	
+	{% else %}
+		<h1>You did not enter a site....</h1>
+	{% endif %}
+
+	
+
+	
+	
+{% endblock %}
